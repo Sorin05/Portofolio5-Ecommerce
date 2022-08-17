@@ -1,6 +1,4 @@
 
-
-
 class Cart():
     """
     A shopping cart class, with some defalt behaviors that
@@ -12,5 +10,5 @@ class Cart():
         self.session = request.session
         cart = self.session.get('skey')
         if 'skey' not in request.session:
-            cart = self.session['skey'] = {'number': 33333}
+            cart = self.session['skey'] = {}
         self.cart = cart

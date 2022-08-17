@@ -14,13 +14,13 @@ class Cart():
         self.cart = cart
 
 
-    def add(self, product):
+    def add(self, product, qty):
         """
         adding and updating cart session
         """
         product_id = product.id
 
         if product_id not in self.cart:
-            self.cart[product_id] = {'price': str(product.price)}
+            self.cart[product_id] = {'price': str(product.price), 'qty': int(qty)}
 
         self.session.modified = True

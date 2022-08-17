@@ -26,10 +26,10 @@
                             <div class="col-6">
                                 <label for="select">Qty</label>
                                 <select id="select">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                             </div>
                             <div class="col-6 text-end">
@@ -51,10 +51,12 @@
             url: '{% url "cart:cart_add" %}',
             data: {
                 productid: $('#add-button').val(),
+                productqty: $('#select option:selected').text(),
                 csrfmiddlewaretoken: "{{csrf_token}}",
                 action: 'post'
             },
             succes: function(json) {
+                console.log(json)
 
             },
             error: fucntion (xhr, errmsg, err){}

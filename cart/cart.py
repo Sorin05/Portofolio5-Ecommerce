@@ -24,3 +24,10 @@ class Cart():
             self.cart[product_id] = {'price': str(product.price), 'qty': int(qty)}
 
         self.session.modified = True
+        
+    def __le__(self):
+        """
+        Get cart data and count qty
+        """
+        return sum(item['qty'] for item in self.cart.values())
+    

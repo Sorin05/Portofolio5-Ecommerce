@@ -56,8 +56,7 @@
                 action: 'post'
             },
             succes: function(json) {
-                console.log(json)
-
+                document.getElementById("cart-qty").innerHTML = json.qty
             },
             error: fucntion (xhr, errmsg, err){}
         });

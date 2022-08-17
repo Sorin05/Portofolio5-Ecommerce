@@ -12,3 +12,15 @@ class Cart():
         if 'skey' not in request.session:
             cart = self.session['skey'] = {}
         self.cart = cart
+
+
+    def add(self, product):
+        """
+        adding and updating cart session
+        """
+        product_id = product.id
+
+        if product_id not in self.cart:
+            self.cart[product_id] = {'price': str(product.price)}
+
+        self.session.modified = True

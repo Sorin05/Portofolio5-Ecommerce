@@ -1,6 +1,6 @@
 {% extends "../base.html" %}
 {% load static %}
-{% block title %}In the cart{% endblock %}
+{% block title %}Cart Summary{% endblock %}
 
 
 {% block content %}
@@ -54,13 +54,8 @@
         {% endwith %}
         {% endfor %}
         <div class="col-12 text-end">
-          <div class="h6 fw-bold">Sub Total: £<div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div></div>
+          <div class="h6 fw-bold">Sub Total: £<div id="subtotal" class="d-inline-flex">{{cart.get_total_price}}</div></div>
         </div>
       </div>
     </main>
-    
-    {% endwith %}
-    {% endfor %}
-    <div class="col-12 text-end">
-    <div class="h6 fw-bold">Sub Total: £<span id="subtotal">{{cart.get_total_price}}
 {% endblock %}

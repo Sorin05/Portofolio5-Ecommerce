@@ -1,3 +1,6 @@
+from decimal import Decimal
+from store.models import Product
+
 
 class Cart():
     """
@@ -21,9 +24,11 @@ class Cart():
         product_id = product.id
 
         if product_id not in self.cart:
-            self.cart[product_id] = {'price': str(product.price), 'qty': int(qty)}
+            self.cart[product_id]['qty'] = qty
+        else:
+            self.cart[product_id] = {'price': str(product.price), 'qty': qty}
 
-        self.session.modified = True
+        self.save()
 
     def __iter__(self):
         """
@@ -46,6 +51,6 @@ class Cart():
 
     def __len__(self):
         """
-        Get cart data and count the qantity
+        Get cart data and count the quantity
         """
         return sum(item['qty'] for item in self.cart.values())

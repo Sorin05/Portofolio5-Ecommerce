@@ -58,4 +58,26 @@
         </div>
       </div>
     </main>
+
+    <script>
+        // delete item
+    $(document).on('click', '.delete-button', function (e) {
+      e.preventDefault();
+      var prodid = $(this).data('index');
+      $ajax({
+        type: 'POST',
+        url: '{% url "cart:cart_delete"%}',
+        data: {
+            productid: $(this).data('index'),
+            csrfmiddlewaretoken: "{{% csrf_token %}}",
+            action: 'post'
+        },
+        succes: function (json) {
+            $('.product-item[data-index="' + prodid +'"]').remove();
+            document.getElementById("subtotal").innerHTML = json.subtotal;
+            document.getElementById("cart-qty").innerHTML = json.qty
+        },
+        error: function (xhr, errmsg, err) {}
+      });  
+    })    
 {% endblock %}

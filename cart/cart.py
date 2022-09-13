@@ -36,7 +36,7 @@ class Cart():
         and return products
         """
         product_ids = self.cart.keys()
-        products = Product.products.filter(id_in=product_ids)
+        products = Product.products.filter(id__in=product_ids)
         cart = self.cart.copy()
 
         for product in products:

@@ -47,7 +47,7 @@
     $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
         $.ajax({
-            type: 'POST', 
+            type: 'POST',
             url: '{% url "cart:cart_add" %}',
             data: {
                 productid: $('#add-button').val(),
@@ -55,13 +55,13 @@
                 csrfmiddlewaretoken: "{{csrf_token}}",
                 action: 'post'
             },
-            succes: function(json) {
-                document.getElementById("cart-qty").innerHTML = json.qty
+            success: function (json) {
+               document.getElementById("cart-qty").innerHTML = json.qty
             },
-            error: fucntion (xhr, errmsg, err){}
+            error: function (xhr, errmsg, err) {}
         });
     })
-</script>    
+</script>
 
 
 

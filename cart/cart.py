@@ -67,7 +67,8 @@ class Cart():
 
     def delete(self, product):
         """
-        Delete item from cart"""
+        Delete item from cart
+        """
         product_id = str(product)
 
         if product_id in self.cart:

@@ -64,16 +64,16 @@
     $(document).on('click', '.delete-button', function (e) {
       e.preventDefault();
       var prodid = $(this).data('index');
-      $ajax({
+      $.ajax({
         type: 'POST',
-        url: '{% url "cart:cart_delete"%}',
+        url: '{% url "cart:cart_delete" %}',
         data: {
             productid: $(this).data('index'),
             csrfmiddlewaretoken: "{{ csrf_token }}",
             action: 'post'
         },
-        succes: function (json) {
-            $('.product-item[data-index="' + prodid +'"]').remove();
+        success: function (json) {
+          $('.product-item[data-index="' + prodid + '"]').remove();
             document.getElementById("subtotal").innerHTML = json.subtotal;
             document.getElementById("cart-qty").innerHTML = json.qty
         },

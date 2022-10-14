@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('store.urls', namespace='store')),
     path('cart/', include('cart.urls', namespace='cart')),
+    path('dashboard/', include('dashboard.urls', namespace='dashboard'))
 ]
 
 if settings.DEBUG:
